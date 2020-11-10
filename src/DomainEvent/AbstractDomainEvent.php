@@ -27,7 +27,7 @@ abstract class AbstractDomainEvent
 
     public static function occur(Uuid $aggregateRootId, array $payload = []): self
     {
-        return new static($aggregateRootId, $payload);
+        return new static($aggregateRootId, array_merge($payload, ['id' => $aggregateRootId]));
     }
 
     public function getId(): DomainEventUuid
