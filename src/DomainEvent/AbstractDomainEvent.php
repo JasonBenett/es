@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+namespace JasonBenett\ES\DomainEvent;
+
+use DateTimeImmutable;
+use JasonBenett\DDD\Domain\ValueObject\Uuid;
+
+abstract class AbstractDomainEvent
+{
+    private DomainEventUuid $id;
+
+    private Uuid $aggregateRootId;
+
+    private array $payload;
+
+    private DateTimeImmutable $recordedOn;
+
+    private function __construct(Uuid $aggregateRootId, array $payload)
+    {
+        $this->id              = new DomainEventUuid();
+        $this->aggregateRootId = $aggregateRootId;
+        $this->payload         = $payload;
+        $this->recordedOn      = new DateTimeImmutable();
+    }
+
+    public static function occur(Uuid $aggregateRootId, array $payload = []): self
+    {
+        return new static($aggregateRootId, $payload);
+    }
+
+    public function getId(): DomainEventUuid
+    {
+        return $this->id;
+    }
+
+    public function getAggregateRootId(): Uuid
+    {
+        return $this->aggregateRootId;
+    }
+
+    public function getPayload(): array
+    {
+        return $this->payload;
+    }
+
+    public function recordedOn(): DateTimeImmutable
+    {
+        return $this->recordedOn;
+    }
+}
