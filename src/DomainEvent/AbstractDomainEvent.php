@@ -17,6 +17,8 @@ abstract class AbstractDomainEvent
 
     private string $type;
 
+    private string $aggregateType;
+
     private DateTimeImmutable $recordedOn;
 
     private function __construct(Uuid $aggregateRootId, array $payload)
@@ -25,6 +27,7 @@ abstract class AbstractDomainEvent
         $this->aggregateRootId = $aggregateRootId;
         $this->payload         = $payload;
         $this->type            = get_class($this);
+        $this->aggregateType   = $this->guessAggregateType();
         $this->recordedOn      = new DateTimeImmutable();
     }
 
@@ -57,4 +60,11 @@ abstract class AbstractDomainEvent
     {
         return $this->recordedOn;
     }
+
+    public function getAggregateType(): string
+    {
+        return $this->aggregateType;
+    }
+
+    abstract protected function guessAggregateType(): string;
 }
