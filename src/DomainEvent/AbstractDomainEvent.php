@@ -15,6 +15,8 @@ abstract class AbstractDomainEvent
 
     private array $payload;
 
+    private string $type;
+
     private DateTimeImmutable $recordedOn;
 
     private function __construct(Uuid $aggregateRootId, array $payload)
@@ -22,6 +24,7 @@ abstract class AbstractDomainEvent
         $this->id              = new DomainEventUuid();
         $this->aggregateRootId = $aggregateRootId;
         $this->payload         = $payload;
+        $this->type            = get_class($this);
         $this->recordedOn      = new DateTimeImmutable();
     }
 
@@ -43,6 +46,11 @@ abstract class AbstractDomainEvent
     public function getPayload(): array
     {
         return $this->payload;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     public function recordedOn(): DateTimeImmutable
