@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59eba757c604fadcbb5d25e9bcb62076",
+    "content-hash": "20c01f7e8fd09cf77da697ee8f88e8d7",
     "packages": [
         {
             "name": "brick/math",
@@ -60,20 +60,20 @@
         },
         {
             "name": "jasonbenett/ddd",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JasonBenett/ddd.git",
-                "reference": "e2cc4dfefd0ef9a0d99ee88357655a1c35bd5e50"
+                "reference": "6c283890ab74e8c3ce769a615d9e676d4bde2128"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JasonBenett/ddd/zipball/e2cc4dfefd0ef9a0d99ee88357655a1c35bd5e50",
-                "reference": "e2cc4dfefd0ef9a0d99ee88357655a1c35bd5e50",
+                "url": "https://api.github.com/repos/JasonBenett/ddd/zipball/6c283890ab74e8c3ce769a615d9e676d4bde2128",
+                "reference": "6c283890ab74e8c3ce769a615d9e676d4bde2128",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4",
+                "php": "^7.4 | ^8.0",
                 "ramsey/uuid": "^4.1"
             },
             "require-dev": {
@@ -96,7 +96,7 @@
                 }
             ],
             "description": "Provide useful DDD classes in PHP",
-            "time": "2020-11-22T14:28:09+00:00"
+            "time": "2020-11-28T09:23:05+00:00"
         },
         {
             "name": "ramsey/collection",
