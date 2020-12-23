@@ -26,13 +26,6 @@ abstract class AbstractEventSourced implements AggregateRootInterface
         return $pendingEvents;
     }
 
-    final protected function recordDomainEvent(AbstractDomainEvent $domainEvent): self
-    {
-        $this->domainEvents->attach($domainEvent);
-
-        return $this;
-    }
-
     public static function reconstitutionFrom(DomainEventCollection $domainEvents): AggregateRootInterface
     {
         $aggregate = new static();
@@ -44,7 +37,14 @@ abstract class AbstractEventSourced implements AggregateRootInterface
         return $aggregate;
     }
 
-    final private function apply(AbstractDomainEvent $domainEvent): void
+    final protected function recordDomainEvent(AbstractDomainEvent $domainEvent): self
+    {
+        $this->domainEvents->attach($domainEvent);
+
+        return $this;
+    }
+
+    private function apply(AbstractDomainEvent $domainEvent): void
     {
         $eventShortName = ClassHelper::getShortName($domainEvent);
 
